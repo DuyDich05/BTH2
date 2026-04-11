@@ -1,0 +1,9 @@
+Nguyễn Địch Khánh Duy - 23810310173
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/d8866e63-d722-4385-871e-1f9c834f4e5d" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/dddc7d50-be0b-4e7c-9dcf-4814d509fd4e" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/13f5361d-476a-45ba-ba64-6c34df8ff994" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/a58159aa-83c3-4d0a-ad22-99007a41c5f3" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/f1a354e5-0a37-40de-8ee6-89a3225083c2" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/51199a0c-c34b-4a0d-9d42-a62d21ca1788" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/1ad26371-0326-4e00-985f-132685744428" />
+<img width="870" height="1883" alt="image" src="https://github.com/user-attachments/assets/1c6e7c08-5df7-4852-a722-8c2696ca44e3" />
