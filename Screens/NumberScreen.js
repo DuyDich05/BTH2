@@ -59,8 +59,8 @@ export default function NumberScreen({ navigation }) {
 
           {/* INPUT */}
           <View style={styles.phoneRow}>
-            <Text style={styles.flag}>🇻🇳</Text>
-            <Text style={styles.code}>+84</Text>
+            <Text style={styles.flag}>🇧🇩</Text>
+            <Text style={styles.code}>+880</Text>
 
             <TextInput
               ref={inputRef}
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
 
   submitBtn: {
     position: "absolute",
-    bottom: 40,
+    bottom: 120,
     right: 20,
     width: 60,
     height: 60,
