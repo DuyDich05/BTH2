@@ -1,72 +1,65 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
+// Screens
 import SplashScreen from "./Screens/SplashScreen";
 import OnboardingScreen from "./Screens/OnBoardingScreen";
-import HomeScreen from "./Screens/HomeScreen";
-import NumberScreen from "./Screens/NumberScreen";
-import OtpScreen from "./Screens/OtpScreen";
-import LocationScreen from "./Screens/LocationScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
+import HomeScreen from "./Screens/HomeScreen";
+import ExploreScreen from "./Screens/ExploreScreen";
+import ProductDetailScreen from "./Screens/ProductDetailScreen";
+import SearchScreen from "./Screens/SearchScreen";
+import BeveragesScreen from "./Screens/BeveragesScreen";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-// 👇 HEADER 2 DÒNG
+//// ===== HEADER =====
 const HeaderTitle = () => (
   <View style={{ alignItems: "center" }}>
-    <Text
-      style={{
-        color: "#fff",
-        fontSize: 15,
-        fontWeight: "600",
-      }}
-    >
+    <Text style={{ color: "#fff", fontSize: 15, fontWeight: "600" }}>
       Nguyễn Địch Khánh Duy
     </Text>
-
-    <Text
-      style={{
-        color: "#E8F5E9",
-        fontSize: 12,
-        marginTop: 2,
-      }}
-    >
+    <Text style={{ color: "#E8F5E9", fontSize: 12 }}>
       MSSV: 23810310173
-    </Text>
-    <Text
-      style={{
-        color: "#fff",
-        fontSize: 15,
-        fontWeight: "600",
-      }}
-    >
-      Đây là bài của em
     </Text>
   </View>
 );
 
+//// ===== BOTTOM TAB (ẨN HOÀN TOÀN) =====
+function MainTab() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+
+        // 👇 ẨN HOÀN TOÀN THANH TAB 2 ICON
+        tabBarStyle: { display: "none" },
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Explore" component={ExploreScreen} />
+    </Tab.Navigator>
+  );
+}
+
+//// ===== APP =====
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: true,
           headerTitleAlign: "center",
-
-          headerStyle: {
-            backgroundColor: "#53B175",
-            height: 80, // 👈 QUAN TRỌNG: đủ chỗ 2 dòng
-          },
-
+          headerStyle: { backgroundColor: "#53B175", height: 80 },
           headerTintColor: "#fff",
-
-          headerTitle: () => <HeaderTitle />, // 👈 dùng component
+          headerTitle: () => <HeaderTitle />,
         }}
       >
-        {/* Ẩn header splash + onboarding cho đẹp */}
         <Stack.Screen
           name="Splash"
           component={SplashScreen}
@@ -79,12 +72,22 @@ export default function App() {
           options={{ headerShown: false }}
         />
 
-        <Stack.Screen name="Number" component={NumberScreen} />
-        <Stack.Screen name="OtpScreen" component={OtpScreen} />
-        <Stack.Screen name="Location" component={LocationScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+
+        {/* MAIN TAB (ĐÃ ẨN TAB BAR) */}
+        <Stack.Screen
+          name="Main"
+          component={MainTab}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="ProductDetail"
+          component={ProductDetailScreen}
+        />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="Beverages" component={BeveragesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
