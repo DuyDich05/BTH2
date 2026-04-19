@@ -81,12 +81,20 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.tabBar}>
         <TabItem icon="grid-outline" label="Shop" active />
         <TabItem
-  icon="search-outline"
-  label="Explore"
-  onPress={() => navigation.navigate("Explore")}
-/>
-        <TabItem icon="cart-outline" label="Cart" />
-        <TabItem icon="heart-outline" label="Favourite" />
+          icon="search-outline"
+          label="Explore"
+          onPress={() => navigation.navigate("Explore")}
+        />
+        <TabItem
+          icon="cart-outline"
+          label="Cart"
+          onPress={() => navigation.navigate("Cart")}
+        />
+        <TabItem
+          icon="heart-outline"
+          label="Favourite"
+          onPress={() => navigation.navigate("Favourite")}
+        />
         <TabItem icon="person-outline" label="Account" />
       </View>
     </View>

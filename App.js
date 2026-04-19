@@ -15,6 +15,9 @@ import ExploreScreen from "./Screens/ExploreScreen";
 import ProductDetailScreen from "./Screens/ProductDetailScreen";
 import SearchScreen from "./Screens/SearchScreen";
 import BeveragesScreen from "./Screens/BeveragesScreen";
+import FilterScreen from "./Screens/FilterScreen";
+import CartScreen from "./Screens/CartScreen";
+import FavouriteScreen from "./Screens/FavouriteScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -88,6 +91,9 @@ export default function App() {
         />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Beverages" component={BeveragesScreen} />
+        <Stack.Screen name="Filter" component={FilterScreen} />
+        <Stack.Screen name="Cart" component={CartScreen} />
+        <Stack.Screen name="Favourite" component={FavouriteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

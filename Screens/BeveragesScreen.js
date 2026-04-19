@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -14,47 +14,73 @@ const DATA = [
     id: "1",
     name: "Diet Coke",
     size: "355ml, Price",
-    price: "$1.99",
+    price: 1.99, // 🔥 sửa thành number
     image: require("../assets/pngfuel11.png"),
   },
   {
     id: "2",
     name: "Sprite Can",
     size: "325ml, Price",
-    price: "$1.50",
+    price: 1.5,
     image: require("../assets/sprite.png"),
   },
   {
     id: "3",
     name: "Apple & Grape Juice",
     size: "2L, Price",
-    price: "$15.99",
+    price: 15.99,
     image: require("../assets/tree-top.png"),
   },
   {
     id: "4",
     name: "Orange Juice",
     size: "2L, Price",
-    price: "$15.99",
+    price: 15.99,
     image: require("../assets/orange.png"),
   },
   {
     id: "5",
     name: "Coca Cola Can",
     size: "325ml, Price",
-    price: "$4.99",
+    price: 4.99,
     image: require("../assets/coca.png"),
   },
   {
     id: "6",
     name: "Pepsi Can",
     size: "330ml, Price",
-    price: "$4.99",
+    price: 4.99,
     image: require("../assets/pepsi.png"),
   },
 ];
 
-export default function BeveragesScreen() {
+export default function BeveragesScreen({ navigation }) {
+  const [cart, setCart] = useState([]);
+
+  // ✅ ADD TO CART
+  const addToCart = (item) => {
+    const exist = cart.find((i) => i.id === item.id);
+
+    let newCart;
+
+    if (exist) {
+      // 👉 nếu đã có → tăng số lượng
+      newCart = cart.map((i) =>
+        i.id === item.id
+          ? { ...i, quantity: i.quantity + 1 }
+          : i
+      );
+    } else {
+      // 👉 chưa có → thêm mới
+      newCart = [...cart, { ...item, quantity: 1 }];
+    }
+
+    setCart(newCart);
+
+    // 👉 chuyển sang Cart
+    navigation.navigate("Cart", { cart: newCart });
+  };
+
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Image source={item.image} style={styles.img} />
@@ -63,9 +89,12 @@ export default function BeveragesScreen() {
       <Text style={styles.desc}>{item.size}</Text>
 
       <View style={styles.bottomRow}>
-        <Text style={styles.price}>{item.price}</Text>
+        <Text style={styles.price}>${item.price}</Text>
 
-        <TouchableOpacity style={styles.btnAdd}>
+        <TouchableOpacity
+          style={styles.btnAdd}
+          onPress={() => addToCart(item)}
+        >
           <Text style={styles.plus}>+</Text>
         </TouchableOpacity>
       </View>
@@ -76,7 +105,11 @@ export default function BeveragesScreen() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Ionicons name="arrow-back" size={22} />
+        <Ionicons
+          name="arrow-back"
+          size={22}
+          onPress={() => navigation.goBack()}
+        />
         <Text style={styles.title}>Beverages</Text>
         <Ionicons name="options-outline" size={22} />
       </View>
@@ -120,6 +153,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 15,
     marginBottom: 15,
+    elevation: 3,
   },
 
   img: {
@@ -154,7 +188,7 @@ const styles = StyleSheet.create({
   },
 
   btnAdd: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#53B175",
     width: 32,
     height: 32,
     borderRadius: 10,
